@@ -1,0 +1,8 @@
+1、学习es6 语法，熟悉掌握 es6 和 es5 的区别 已经学习了部分
+2、学习vue，一边写代码，一边看教程文档 已经学习了部分
+3、学习node ,将书看完 已经学习了部分
+4、学习 webpack   http://webpack.github.io/docs/ 已经学习了基础部分
+5、学习 vue-router http://vuejs.github.io/vue-router/zh-cn/index.html   已经学习了部分
+6、学习 babel https://github.com/babel/babel 已经学习了部分
+7、学习npm 的具体用法，现在不够全面 已经学习了部分
+8、将express纳入学习步骤

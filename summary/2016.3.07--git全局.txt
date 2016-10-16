@@ -1,0 +1,33 @@
+今天系统的学习了如何使用git  
+http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137628548491051ccfaef0ccb470894c858999603fedf000
+
+总结如下：
+1、创建本地仓库 git init
+2、git add ***.txt 添加到暂存区 （平时修改是在工作区修改的）
+3、git commit -m "" 添加到本地库
+4、git status 查看状态 
+5、git diff 区分工作区域本地库
+6、git diff --cached 区分暂存区和本地库
+7、git log 查看历史记录日志
+8、git reflog 查看历史命令记录
+9、git reset --hard HEAD~1 返回上一个 或者回退对应版本
+10、git checkout -- file 撤销工作区的修改
+11、git reset HEAD file 撤销暂存区修改
+12、git remote add origin url 从本地连接到远程库
+13、git clone url 克隆远程库
+14、git push -u origin master 第一次推送master的所有内容
+15、git remote set-url origin url重置origin地址
+16、git checkout -b hyj 创建并切换
+17、git branch hyj 创建步切换
+18、git checkout hyj 切换
+19、git merge hyj 合并分之
+20、git branch -d hyj删除分支
+21、
+
+
+electron学习之路
+1、main.js主进程
+2、其它渲染进程通过ipc模块与主进程通信，请求调用GUI，本身不能调用
+3、今天翻译了menuItem
+
+学习了使用Markdown，熟悉了它的语法格式

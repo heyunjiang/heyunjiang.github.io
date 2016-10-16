@@ -1,0 +1,6 @@
+iscroll使用总结: 
+能实现界面的流畅滚动,下拉刷新.
+要避免同一界面的事件重复加载.
+在每次页面重绘之后都需要 myScroll.refresh()；
+使用格式－－－应该用2个div层来包含ul；
+设置属性：preventDefault:false使容器可以点击；

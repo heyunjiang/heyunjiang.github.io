@@ -1,0 +1,32 @@
+1、node是单进程、单线程的
+2、使用pm2可以解决lass云服务的单进程模式
+
+
+前端开发框架：6个
+
+vue.js
+
+是一个构建数据驱动的 web 界面的库，目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件，它只聚焦于视图层。
+
+AngularJS
+
+AngularJS主要考虑的是构建CRUD应用,至少90%的WEB应用都是CRUD应用;
+游戏，图形界面编辑器，这种DOM操作很频繁也很复杂的应用，和CRUD应用就有很大的不同，它们不适合用AngularJS来构建;
+
+React
+
+Ember
+
+Polymer
+
+Riot
+
+用nw.js和electron开发桌面应用
+1、nw.js入坑指南，electron坑更少
+2、常用解决方案：桌面应用electron+nodejs
+		 移动应用cordova
+
+
+RequireJS 
+
+是一个JavaScript模块加载器。它非常适合在浏览器中使用, 它非常适合在浏览器中使用，但它也可以用在其他脚本环境, 就像 Rhino and Node. 使用RequireJS加载模块化脚本将提高代码的加载速度和质量。

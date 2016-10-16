@@ -1,0 +1,14 @@
+1、prototype包含 constructor和__proto__
+
+2、prototype必须指向一个对象或null
+
+3、所以子类继承父类时，只需要将子类的prototype指向父类的一个实例即可，因为实例是对象，
+   而类没有实力化不是对象（？？？正确吗）
+
+4、不是每个对象都有prototype，只有函数对象才有prototype
+
+5、继承分为类式继承与原型式继承
+
+6、继承思想：不是任何时候都需要使用继承，可以不使用继承
+
+7、url中使用javascript:执行js代码

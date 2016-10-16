@@ -1,0 +1,81 @@
+1、javascript 操作数组
+
+对数组的首尾添加删除元素
+数组排序
+数组截取
+数组转字符串
+数组拼接
+数组迭代器(应用于数组中的每个元素)-不生成新数组：forEach,every,some,reduce,reduceRight
+数组迭代器(应用于数组中的每个元素)-生成新数组：map,filter 
+
+2、学到的初级概念，以后还需要再次学习
+
+列表、栈、回文、队列
+
+3、链表
+
+如果数组在实际使用中很慢，因为在首尾或中间插入或删除数据时会比较麻烦。
+js链表的定义不一样：
+定义的是一个双向链表（代码底部）
+
+4、
+
+<script type="text/javascript">
+	//define node
+	function Node(ele){
+		this.element = ele;
+		this.next = null;
+		this.previous = null;
+	}
+	//define two-way LinkedList, already define a head node
+	function LList(){
+		this.head = new Node("head");
+		this.find = find;
+		this.insert = insert;
+		this.remove = remove;
+		this.display = display;
+	}
+	//define find method
+	function find(item) {
+		var currNode = this.head;
+		while(currNode.element != item){
+			currNode = currNode.next;
+		}
+		return currNode;
+	}
+	//define insert method, insert after item node
+	function insert(newElement,item) {
+		var newNode = new Node(newElement);
+		var current = this.find(item);
+		newNode.previous = current;
+		newNode.next = current.next;
+		current.next = newNode;
+		if(!(current.next==null)) current.next.previous = newNode;
+	}
+	//define remove method
+	function remove(item) {
+		var currNode = find(item);
+		currNode.previous.next = currNode.next;
+		currNode.next = null;
+		currNode.previous = null;
+		if(!(currNode.next == null)) {
+			currNode.next.previous = currNode.previous;
+		}
+	}
+	//define display method
+	function display() {
+		var currNode = this.head;
+		while(!(currNode.next == null)) {
+			console.log(currNode.next.element);
+			currNode = currNode.next;
+		}
+	}
+
+	var cities = new LList();
+	cities.insert("sichuan","head");
+	cities.insert("chengdu","sichuan");
+	cities.insert("suning","chengdu");
+	cities.display();
+</script>
+
+

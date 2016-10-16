@@ -1,0 +1,6 @@
+git上传操作步骤
+1、首先进入项目根目录
+2、git status   查看项目的修改状态
+3、git add src  将修改的src目录全部更新到发布版本
+4、git commit -m ""为本次项目更新添加说明
+5、git push origin master 将更新提交到线上库
