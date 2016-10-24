@@ -1,4 +1,0 @@
-1、表单上传文件必须写明
-	enctype="multipart/form-data"
-
-2、使用ajaxfileupload.js上传文件的时候，dataType 只能写成content，不能写成json

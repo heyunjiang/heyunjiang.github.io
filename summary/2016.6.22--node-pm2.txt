@@ -1,7 +1,0 @@
-1、使用firekylin (基于thinkjs) 搭建博客
-
-2、使用pm2管理node 应用
-https://segmentfault.com/a/1190000002539204
-注意：使用pm2可以解决负载均衡
-
-3、

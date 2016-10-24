@@ -1,2 +1,0 @@
-1、学习jquery、插件编写、ecmascript 6
-2、flex的学习，代替其它布局方式
