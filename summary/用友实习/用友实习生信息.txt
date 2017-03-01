@@ -1,0 +1,5 @@
+人员编码： 0000072917 何运江 实习生 heyjc@yonyou.com ufida2013%
+
+HER员工自助账号初始密码：uf0000
+
+收件、发件服务器 ： mail.yonyou.com 端口 110 25
