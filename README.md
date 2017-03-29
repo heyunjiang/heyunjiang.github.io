@@ -1,9 +1,15 @@
-# heyunjiang.github.io
+原本是我自己的简历代码，但是后面需要在公司的电脑、家里面电脑、学校里面电脑都使用，如何建多个项目，每次就需要add,commit,pull,push几次，所以我就把这个扩展了，里面包含了： 
 
+1. 个人简历
+2. 平时总结 `summary`
+3. 毕业设计 `graduate`
 
-我的简历
+后面其他有趣的也在这个里面弄了
 
-我的学习总结
+## 平时有空的时候可以搞搞
 
-我的思考
+1. [vagrant](http://lovelace.blog.51cto.com/1028430/1423343) : 在windows,mac上使用来打造自己的开发环境，其实就是包装了一层虚拟机
+2. [docker](https://www.gitbook.com/book/yeasy/docker_practice/details) 在linux 环境下使用的，也是打造自己的开发环境，不过这个相比虚拟机更好，它是操作于系统底层，控制进程独立，使用起来更快速，消耗更低
+3. [electron](https://github.com/electron/electron) 使用前端技术构建桌面应用，这个之前做过一个车险项目，使用electron打包就是我做的
 
+> 后面有空的时候，我会把每个都做一个简单的应用
