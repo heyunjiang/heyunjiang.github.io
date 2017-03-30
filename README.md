@@ -11,5 +11,7 @@
 1. [vagrant](http://lovelace.blog.51cto.com/1028430/1423343) : 在windows,mac上使用来打造自己的开发环境，其实就是包装了一层虚拟机
 2. [docker](https://www.gitbook.com/book/yeasy/docker_practice/details) 在linux 环境下使用的，也是打造自己的开发环境，不过这个相比虚拟机更好，它是操作于系统底层，控制进程独立，使用起来更快速，消耗更低
 3. [electron](https://github.com/electron/electron) 使用前端技术构建桌面应用，这个之前做过一个车险项目，使用electron打包就是我做的
+4. [mockjs](https://github.com/nuysoft/Mock/wiki) 用于前端工程师，实现用来与后端分离
+5. [将html保存为PDF并下载](https://heyunjiang.github.io/html2pdf/index.html) 使用了 `html2canvas` + `jsPDF` 
 
 > 后面有空的时候，我会把每个都做一个简单的应用
