@@ -31,17 +31,19 @@
 			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
 	</div>
-		<button class="btn btn-success" onclick="generate();">generate</button>
+		<button class="btn btn-success" id="generate">generate</button>
 		<script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta3/html2canvas.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.debug.js"></script>
 		<script>
-			function generate(){
+		window.onload = function() {
+			document.getElementById('generate').onclick = function(){
 				var doc = new jsPDF()
 				html2canvas(document.getElementById('form')).then(function(canvas) {
             		doc.addImage(canvas.toDataURL("image/png"), 'PNG', 10, 10);
             		doc.save('a4.pdf');
         		});
 			}
+		}
 		</script>
 	</body>
 </html>
