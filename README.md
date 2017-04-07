@@ -13,5 +13,7 @@
 3. [electron](https://github.com/electron/electron) 使用前端技术构建桌面应用，这个之前做过一个车险项目，使用electron打包就是我做的
 4. [mockjs](https://github.com/nuysoft/Mock/wiki) 用于前端工程师，实现用来与后端分离
 5. [将html保存为PDF并下载](https://github.com/heyunjiang/heyunjiang.github.io/blob/master/test.html) 使用了 `html2canvas` + `jsPDF` 
+6. [前端错误监控与上报](http://www.alloyteam.com/2017/03/jserror1/)-- [PWA](https://zhuanlan.zhihu.com/p/25800461)--[web客户端追踪](http://www.freebuf.com/articles/web/127266.html) 为项目前端团队写一个专属的错误监控器。
+7. 
 
 > 后面有空的时候，我会把每个都做一个简单的应用
