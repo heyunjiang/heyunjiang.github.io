@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+	<title>login</title>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<style type="text/css">
+		html,body {
+			padding: 0;
+			margin: 0;
+			width: 100%;
+			height: 100%;
+			font-family: "Microsoft YaHei";
+		}
+		.back {
+			background-image: url(./img/4.jpg);
+			background-repeat: no-repeat;
+			background-size: 100%;
+			opacity:1;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+		}
+		.header {
+			background-color: rgba(0,0,0,0.1);
+			border-color: rgba(0,0,0,0.1);
+		}
+		.center {
+			text-align: center;
+		}
+		.login-box {
+			padding: 10px 0;
+			margin-top: 120px;
+			border: 3px solid rgba(9,101,90,1);
+			border-radius: 15px;
+			background-color: rgba(255,255,255,0.7);
+		}
+		.footer {
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div class="back"></div>
+	<div class="container-fluid">
+		<div class="row">
+			<nav class="navbar navbar-inverse header">
+			  <div class="container-fluid">
+			    <div class="navbar-header">
+			     <p class="navbar-text h3" style="color: white;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;专业学位研究生实践信息平台</p>
+			    </div>
+			  </div>
+			</nav>
+		</div>
+		<div class="row">
+			<div class="col-md-7"></div>
+			<div class="col-md-4 login-box">
+				<p class="center h3" style="padding-bottom: 10px;border-bottom: 1px solid gray;margin: 0 35px 20px;">用户登录</p>
+				<form class="form-horizontal" style="position: relative;top:5px;">
+				  <div class="form-group">
+				    <div class="col-sm-2"></div>
+				    <div class="input-group col-sm-8">
+				      <div class="input-group-addon" style="background-color: #5cb85c;color:white;width:80px;font-weight: bold;">用户名</div>
+				      <input type="text" class="form-control" id="exampleInputAmount" placeholder="用户名">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-sm-2"></div>
+				    <div class="input-group col-sm-8">
+				      <div class="input-group-addon" style="background-color: #5cb85c;color:white;white;width:80px;font-weight: bold;">密&nbsp;&nbsp;&nbsp;码</div>
+				      <input type="text" class="form-control" id="exampleInputAmount" placeholder="密码">
+				    </div>
+				  </div>
+				 
+				  <div class="form-group">
+				    <div class="col-sm-offset-8 col-sm-4">
+				      <div class="checkbox">
+				        <label>
+				          <input type="checkbox"> 记住帐号
+				        </label>
+				      </div>
+				    </div>
+				  </div>
+				 
+				  <div class="form-group">
+				    <div class="col-sm-12 center">
+				    	<button type="submit" class="btn btn-default" style="width:80px;background-color: gray;color:white;margin-bottom: 10px;">重置</button>
+				    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				    	<button type="submit" class="btn btn-danger" style="width:80px;margin-bottom: 10px;">登录</button>
+				    </div>
+				  </div>
+				</form>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+	<nav class="navbar navbar-default navbar-fixed-bottom header">
+	  <div class="container">
+	    
+	    <p class="center">电子科技大学 信息与软件工程学院</p>
+		<p class="center">School of Information and Software Engineering, UESTC</p>
+		<p class="center">专业学位研究生实践信息平台-张力夫-2013220203016</p>
+
+	  </div>
+	</nav>
+
+<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
