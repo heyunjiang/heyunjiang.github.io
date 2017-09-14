@@ -4,6 +4,8 @@
 
 ## 目录结构说明
 
+查看npm的dva包
+
 ```bash
 ├── /dist/            # 项目输出目录
 ├── /lib/             # 项目源码编译后的库目录
@@ -46,6 +48,8 @@ export default createDva({
 ```
 
 进入 `'./createDva'`,我们先看看它 import 了哪些主要工具: `react-redux`、`redux`、`redux-saga`。
+
+`redux-saga` 是 `redux` 的一个中间件，用于 `effects` 管理。
 
 export出createDva，在 `src/index` 里面已经执行了，它返回的是一个函数dva，dva执行则返回一个app对象，也就是我们使用dva的那几个简单api操作接口对象，
 
@@ -170,7 +174,7 @@ router，将其push到_router数组中
 #### 2.从_model中装载reducers和sagas所需信息
 
 ```
-	  const sagas = [];
+const sagas = [];
       const reducers = { ...initialReducer };
       for (const m of this._models) {
         reducers[m.namespace] = getReducer(m.reducers, m.state);
@@ -193,7 +197,7 @@ reducer加载_model的reducer，saga加载_model的effects
 3.构建 `enhancers` ，组成一个函数数组，我理解的它主要是effects，用于后面构建 `store`
 
 ```
-	  const enhancers = [
+const enhancers = [
         applyMiddleware(...middlewares),
         devtools(),
         ...extraEnhancers,
@@ -203,7 +207,7 @@ reducer加载_model的reducer，saga加载_model的effects
 4.构建 `store` ，使用 `redux` 提供的 `createStore()`方法创建 store，
 
 ```
-	  const store = this._store = createStore(
+const store = this._store = createStore(
         createReducer(),
         initialState,
         compose(...enhancers),
@@ -231,7 +235,7 @@ reducer加载_model的reducer，saga加载_model的effects
 执行数据源订阅，获取 _model 中的`subscriptions`，其中，runSubscriptions会执行 `redux` 的 `dispatch` 方法，来启动subscriptions
 
 ```
-	  const unlisteners = {};
+const unlisteners = {};
       for (const model of this._models) {
         if (model.subscriptions) {
           unlisteners[model.namespace] = runSubscriptions(model.subscriptions, model, this,
@@ -243,7 +247,7 @@ reducer加载_model的reducer，saga加载_model的effects
 最后，才来应用 `store`: 这里要使用 `react-dom` 的 `render` 方法来渲染dom;使用 `react-redux` 的 `Provider` 将 `react` 与 `redux`连接起来并共享 `store`;
 
 ```
-	if (container) {
+if (container) {
       render(container, store, this, this._router);
       plugin.apply('onHmr')(render.bind(this, container, store, this));
     } else {
