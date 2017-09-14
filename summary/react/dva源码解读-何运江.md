@@ -18,7 +18,7 @@
 └── router.js    	  # 路由输出
 ```
 
-### 源码解读
+## 源码解读
 
 进入src目录进行源码查看，`index.js`是作为项目的入口文件，执行createDva，导出dva函数
 
@@ -165,9 +165,9 @@ router，将其push到_router数组中
 
 ### start细讲
 
-1.support selector 获取dom容器
+#### 1.support selector 获取dom容器-container
 
-2.从model中装载reducers和sagas所需信息
+#### 2.从_model中装载reducers和sagas所需信息
 
 ```
 	  const sagas = [];
@@ -178,8 +178,111 @@ router，将其push到_router数组中
       }
 ```
 
-reducer加载model的reducer，saga加载model的effects
+reducer加载_model的reducer，saga加载_model的effects
 
-3.构建store
+#### 3.构建store
+
+1.首先创建 `sagaMiddleware` ，使用 `saga` 提供的 `createSagaMiddleware()` 方法创建。
+
+`const sagaMiddleware = createSagaMiddleware();`
+
+2.然后构建 `middlewares` 数组，由 `sagaMiddleware` 和其他的 `extraMiddlewares` 构成，用于使用 `redux` 的 `applyMiddleware` 来加载 `redux` 所需的中间件。
+
+`let middlewares = [sagaMiddleware,...flatten(extraMiddlewares),];`
+
+3.构建 `enhancers` ，组成一个函数数组，我理解的它主要是effects，用于后面构建 `store`
+
+```
+	  const enhancers = [
+        applyMiddleware(...middlewares),
+        devtools(),
+        ...extraEnhancers,
+      ];
+```
+
+4.构建 `store` ，使用 `redux` 提供的 `createStore()`方法创建 store，
+
+```
+	  const store = this._store = createStore(
+        createReducer(),
+        initialState,
+        compose(...enhancers),
+      );
+
+      function createReducer(asyncReducers) {
+        return reducerEnhancer(combineReducers({
+          ...reducers,
+          ...extraReducers,
+          ...asyncReducers,
+        }));
+      }
+```
+
+构建好了 `store` 之后，如何应用呢？
+
+先需要将 `saga` 中间件启动起来
+
+`sagas.forEach(sagaMiddleware.run);`
+
+绑定 `history`
+
+`if (setupHistory) setupHistory.call(this, history);`
+
+执行数据源订阅，获取 _model 中的`subscriptions`，其中，runSubscriptions会执行 `redux` 的 `dispatch` 方法，来启动subscriptions
+
+```
+	  const unlisteners = {};
+      for (const model of this._models) {
+        if (model.subscriptions) {
+          unlisteners[model.namespace] = runSubscriptions(model.subscriptions, model, this,
+            onErrorWrapper);
+        }
+      }
+```
+
+最后，才来应用 `store`: 这里要使用 `react-dom` 的 `render` 方法来渲染dom;使用 `react-redux` 的 `Provider` 将 `react` 与 `redux`连接起来并共享 `store`;
+
+```
+	if (container) {
+      render(container, store, this, this._router);
+      plugin.apply('onHmr')(render.bind(this, container, store, this));
+    } else {
+      return getProvider(store, this, this._router);
+    }
+
+    function getProvider(store, app, router) {
+      return extraProps => (
+        <Provider store={store}>
+          { router({ app, history: app._history, ...extraProps }) }
+        </Provider>
+      );
+    }
+
+	function render(container, store, app, router) {
+      const ReactDOM = require('react-dom');
+      ReactDOM.render(React.createElement(getProvider(store, app, router)), container);
+    }
+
+```
 
 
+----------
+
+
+到这里就，基本结束了dva的源码大概解析。
+
+我这里只分析了它实现的基本原理，它的一些实现细节需要你去具体分析，它还包含了plugin、invariant、saga方法等的应用。
+
+接下来总结一下它的实现步骤
+
+## 步骤总结
+
+1. 构建 `createDva` 函数，执行并返回 `dva` 方法对象
+2. 构建 `dva` 方法执行返回的 `app` 对象，首先构建基础的 `_models, _router, _store, _history, _plugin, use, model, router`，这些有的是数组，有的是函数
+3. 构建 `start`，也是最重要的一个环节，这里构建了 `saga`，监听了 `subscription`，构建了 `store`，
+4. 最后将 `redux`、`saga`、`react`结合起来，应用到项目中
+
+
+----------
+
+这里的简单总结，也是我自己对于dva应用的学习总结
