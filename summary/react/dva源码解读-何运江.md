@@ -289,4 +289,12 @@ if (container) {
 
 ----------
 
+对于一个model的处理，比如injectModel，动态插入dodel时，分三步
+
+1. getReducer(m.reducers, m.state) && store.replaceReducer()，完整替换之前的reducer
+2. getSaga(m.effects, m, onError) && store.runSaga()
+3. runSubscriptions(m.subscriptions, m, this, onError) 执行subscriptions
+
+----------
+
 这里的简单总结，也是我自己对于dva应用的学习总结
