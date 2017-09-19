@@ -2,6 +2,8 @@
 
 [dva](https://github.com/dvajs/dva): 基于redux、react-redux、redux-saga、react-router 的轻量级框架
 
+dva 只是对上面组件的一层封装，react该怎么写还是怎么写，不影响组件的写法
+
 ## 目录结构说明
 
 查看npm的dva包
