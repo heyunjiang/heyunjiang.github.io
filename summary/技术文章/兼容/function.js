@@ -22,3 +22,6 @@ function bindEvent(type, func){
 var e = window.event||e;
 /*get target*/
 var ele = e.srcElement ? e.srcElement:e.target;
+
+
+/*注意：以上这些写法，在每次调用的时候都要进行一次判断，可以考虑采用惰性函数写法*/
