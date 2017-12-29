@@ -2,4 +2,4 @@
 
 2. vpn: https://avpn.yonyou.com/prx/000/https/vpnlcm.yonyou.com/login.html?id=common
 
-3. 
+3. 连接打印机： \\10.115.0.83  Administrator *ufida2014
