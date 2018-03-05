@@ -132,7 +132,41 @@ ReactDOM.render(
 3. 用大写开头命名组件
 4. JSX 中使用字符串常量，react不会对其转义 `{'<3'}`
 5. 如果没有给属性传值，它默认为 true
-6. 
 
+## synthetic event
 
+同步事件对象，所有事件对象共享，只能同步方式获取属性，事件回调之后，所有属性会被置空，不能被异步访问
 
+`synthetic event`：是react在基于浏览器原生事件的跨浏览器实现
+
+在react直接触发的 `synthetic event` 格式如下
+
+```javascript
+Proxy {
+  dispatchConfig: Object, 
+  _targetInst: ReactDOMComponent, 
+  isDefaultPrevented: function, 
+  isPropagationStopped: function, 
+  _dispatchListeners: function…
+}
+```
+直接dom触发的 `dom event` 格式如下
+
+```javascript
+MouseEvent {
+  isTrusted: true,
+  screenX: 20,
+  screenY: 115,
+  clientX: 20,
+  clientY: 23…
+}
+```
+
+> 如何在 `synthetic event` 中访问原生 `dom event` 呢？
+> 答： `synthetic event` 属性：target或currentTarget
+
+>target与currentTarget 有什么区别？
+>答：事件有冒泡和捕获2种阶段，事件冒泡就是由最具体的节点冒泡到事件最不具体的节点。在react `synthetic event` 中的阶段，`target` 永远指向最具体的目标，就是你当前操作的目标，而 `currentTarget` 指向的是你当前事件绑定的dom节点
+
+> 为什么要有 `synthetic event` 存在呢？
+> 答：为了方便用户开发，实现了跨浏览器，优化、简化了事件的各种操作，提供统一接口。通过es6的Proxy实现
