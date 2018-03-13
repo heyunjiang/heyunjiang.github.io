@@ -19,6 +19,8 @@
 
 预估原因： 是即将要加载的包版本和cache中的版本冲突，新版本的npm对其的操作与旧版本不同
 
+> 可以尝试重复npm install命令，也有可能原因是npm不稳定
+
 ## 常用Loader
 
 1. `style-loader`
@@ -31,6 +33,7 @@
 1. `html-webpack-plugin`--html模板
 2. `clean-webpack-plugin`--清空生成的dist文件夹
 3. `uglifyjs-webpack-plugin`--压缩并精简代码
+4. `webpack.optimize.CommonsChunkPlugin`--提取公共代码到指定文件中，用于缓存
 
 ## 深入webpack
 
@@ -106,3 +109,30 @@ import(/* webpackChunkName: "print" */ './print').then(module => {
   print();
 });
 ```
+
+### 七 构建缓存
+
+构建场景：确保webpack编译生成的文件能够被客户端缓存，在文件内容发生变化后，能够请求到新的文件
+
+构建目标：通过webpack构建待缓存文件，分类：固定不变的类库构建、自身src代码构建
+
+hash值变化策略：每次webpack构建命令执行，固定不变的类库的hash值保持不变，构建的自身src代码，当引入或删除组件的时候改变hash值
+
+关键配置代码
+
+```javascript
+new webpack.HashedModuleIdsPlugin(),
+new webpack.optimize.CommonsChunkPlugin({
+  name: 'vendor'
+}),
+new webpack.optimize.CommonsChunkPlugin({
+  name: 'manifest'
+})
+```
+
+使用 `HashedModuleIdsPlugin`，用于解决在entry中已经命名的chunk在使用 `CommonsChunkPlugin`打包后hash值变化的问题
+
+前后2次使用 `CommonsChunkPlugin` 的顺序要保证一直，因为webpack是根据解析顺序来控制hash值生成的
+
+### 八 创建library
+

@@ -22,6 +22,8 @@ display新属性值
 5. `align-items`: flex-start | flex-end | center | baseline | stretch (在垂直交叉轴上对齐方式)
 6. `align-content`: flex-start | flex-end | center |stretch | space-between | space-around (多个轴线在空间上对齐方式)
 
+> 注意：若设置 `flex-direction: column`，则此时主轴为交叉轴，操作 `justify-content` 则变为垂直方向的对齐方式
+
 ### 项目属性
 
 这是定义在容器内每个项目上的属性
