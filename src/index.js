@@ -1,5 +1,7 @@
-const doit = ()=>{
-	console.log('just do it')
-}
+import { Button } from 'antd'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-module.exports = doit
+ReactDOM.render(<div>
+		<Button>btn</Button>
+	</div>, document.body);
