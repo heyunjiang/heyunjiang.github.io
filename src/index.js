@@ -1,7 +1,7 @@
-import { Button } from 'antd'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Header from './header/header'
 
 ReactDOM.render(<div>
-		<Button>btn</Button>
-	</div>, document.body);
+		<Header />
+	</div>, document.getElementById('root'));

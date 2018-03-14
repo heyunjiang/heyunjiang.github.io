@@ -10,10 +10,9 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: 'Development'
-    }),
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+      title: 'Development',
+      template: 'src/index.html'
+    })
   ],
   module: {
     rules: [
@@ -24,8 +23,8 @@ module.exports = {
         loader: "babel-loader" 
       },
       {
-        test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        test: /\.less$/,
+        use: [ 'style-loader', 'css-loader', 'less-loader' ]
       }
     ]
   },
@@ -33,11 +32,4 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash].js',
   },
-  // devtool: 'inline-source-map',
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    compress: true,
-    port: 9000,
-    hot: true
-  }
 };
