@@ -2,6 +2,7 @@ var __wpo = {
   "assets": {
     "main": [
       "/main.js",
+      "/signaturepad.c6d58faa6da9560081be.js",
       "/main.css",
       "/"
     ],
