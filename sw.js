@@ -9,26 +9,22 @@ self.addEventListener('install', event => {
     ]))
   );
 });
-  
-self.addEventListener('fetch', function (event) {
-  event.respondWith(
-    caches.match(event.request)                  
-    .then(function (response) {
-      if (response) {                            
-        return response;                         
+ 
+self.addEventListener('fetch', function(event) {
+  event.respondWith(caches.match(event.request).then(function(response) {
+    let responsePre = response&&response.clone()||null;
+    return fetch(event.request).then(function (response) {
+      let responseClone = response.clone();
+      caches.open('v1').then(function (cache) {
+        cache.put(event.request, responseClone);
+      });
+      return response;
+    }).catch(function () {
+      if (responsePre !== null) {
+        return responsePre
+      } else {
+        return caches.match('/sw-test/gallery/myLittleVader.jpg');
       }
-      var requestToCache = event.request.clone();  //          
-      return fetch(requestToCache).then(                   
-        function (response) {
-          if (!response || response.status !== 200) {      
-            return response;
-          }
-          var responseToCache = response.clone();          
-          caches.open(cacheName)                           
-            .then(function (cache) {
-              cache.put(requestToCache, responseToCache);  
-            });
-          return response;             
-    })
-  );
+    });
+  }));
 });
