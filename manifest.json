@@ -1,6 +1,6 @@
 {
 	"name": "character search",
-	"short_name": "character",
+	"short_name": "password",
 	"icons": [
 		{
 			"src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
 			"type": "image/png"
 		}
 	],
-	"start_url": "./index.html",
+	"start_url": "./hello.html",
     "theme_color": "#181743",
     "background_color": "#181743",
     "display": "standalone"
