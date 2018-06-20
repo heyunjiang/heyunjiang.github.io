@@ -1,20 +1,20 @@
 {
-	"name": "character search",
-	"short_name": "password",
-	"icons": [
-		{
-			"src": "/android-chrome-192x192.png",
-			"sizes": "192x192",
-			"type": "image/png"
-		},
-		{
-			"src": "/android-chrome-512x512.png",
-			"sizes": "512x512",
-			"type": "image/png"
-		}
-	],
-	"start_url": "./index.html",
-    "theme_color": "#181743",
-    "background_color": "#141415",
-    "display": "standalone"
+  "name": "character search", // 打开后网页名称
+  "short_name": "password", // 图标下的名称
+  "icons": [
+    {
+  	  "src": "/android-chrome-192x192.png",
+  	  "sizes": "192x192",
+  	  "type": "image/png"
+  	},
+  	{
+  	  "src": "/android-chrome-512x512.png",
+  	  "sizes": "512x512",
+  	  "type": "image/png"
+  	}
+  ],
+  "start_url": "./index.html", // 默认加载页
+  "theme_color": "#181743", // 主题
+  "background_color": "#141415", // 启动背景颜色
+  "display": "standalone" // 启动类型，通常设置 standalone、fullscreen
 }
