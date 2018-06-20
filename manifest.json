@@ -1,6 +1,6 @@
 {
   "name": "character search", // 打开后网页名称
-  "short_name": "signaturepad", // 图标下的名称
+  "short_name": "character", // 图标下的名称
   "icons": [
     {
   	  "src": "/android-chrome-192x192.png",
