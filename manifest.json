@@ -13,7 +13,7 @@
   	  "type": "image/png"
   	}
   ],
-  "start_url": "./signaturepad.html", // 默认加载页
+  "start_url": "/", // 默认加载页
   "theme_color": "#181743", // 主题
   "background_color": "#141415", // 启动背景颜色
   "display": "standalone" // 启动类型，通常设置 standalone、fullscreen
