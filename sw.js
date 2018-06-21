@@ -4,7 +4,8 @@ const cachedFiles = [
   '/index.html',
   '/app.js'
 ]
-console.log(self)
+const ajaxExp = /[\?|\&]apikey=/ //判断是ajax请求，应用到其他项目需要重写
+
 self.addEventListener('install', function(event) {
   event.waitUntil(
     /*caches.open(version).then(function(cache) {
@@ -35,11 +36,8 @@ self.addEventListener('activate', function (event) {
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(caches.match(event.request).then(function(response) {
-    // 在线的ajax请求，必须重新获取
-    if (response !== undefined) {
-      console.log('请求到旧数据')
-      return response;
-    } else {
+    // 在线、ajax请求，必须重新获取
+    if((self.navigator&&self.navigator.onLine&&ajaxExp.test(event.request.url)) || !response) {
       console.log(event.request, '发起新的数据')
       return fetch(event.request).then(function (response) {
         if(!response || response.status !== 200) {
@@ -54,6 +52,9 @@ self.addEventListener('fetch', function(event) {
       }).catch(function (e) {
         return e;
       });
+    } else {
+      console.log('请求到旧数据')
+      return response;
     }
   }));
 });
