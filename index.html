@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
@@ -13,6 +13,7 @@
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#181743">
+    <meta name="description" content="pwa test">
     <meta name="application-name" content="search">
     <title>search</title>
     <style>
@@ -27,18 +28,20 @@
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript">
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function(reg) {
-          if(reg.installing) {
-            console.log('Service worker installing');
-          } else if(reg.waiting) {
-            console.log('Service worker installed');
-          } else if(reg.active) {
-            console.log('Service worker active');
-          }
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function(reg) {
+            if(reg.installing) {
+              console.log('Service worker installing');
+            } else if(reg.waiting) {
+              console.log('Service worker installed');
+            } else if(reg.active) {
+              console.log('Service worker active');
+            }
 
-        }).catch(function(error) {
-          console.log('Registration failed with ' + error);
-        });
+          }).catch(function(error) {
+            console.log('Registration failed with ' + error);
+          });
+        })
       }
     </script>
   </body>

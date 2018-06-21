@@ -1,4 +1,4 @@
-const version = 'v1'
+const version = 'v2'
 const cachedFiles = [
   '/',
   '/index.html',
@@ -10,7 +10,27 @@ self.addEventListener('install', function(event) {
     caches.open(version).then(function(cache) {
       return cache.addAll(cachedFiles);
     })
+    self.skipWaiting() // 强制我这里就是最新的
   );
+});
+
+self.addEventListener('activate', function (event) {
+  event.waitUntil(
+    Promise.all([
+      self.clients.claim(),
+      caches.keys().then(function (cacheList) {
+        return Promise.all(
+          cacheList.map(function (cacheName) {
+            if (cacheName !== version) {
+              return caches.delete(cacheName);
+            }
+          })
+        );
+      })
+    ])
+  );
+  // 激活成功
+  console.log("激活成功")
 });
 
 self.addEventListener('fetch', function(event) {
