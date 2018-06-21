@@ -7,9 +7,9 @@ const cachedFiles = [
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open(version).then(function(cache) {
+    /*caches.open(version).then(function(cache) {
       return cache.addAll(cachedFiles);
-    })
+    })*/
     self.skipWaiting() // 强制我这里就是最新的
   );
 });
