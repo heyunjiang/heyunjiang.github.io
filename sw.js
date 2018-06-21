@@ -4,7 +4,7 @@ const cachedFiles = [
   '/index.html',
   '/app.js'
 ]
-
+console.log(self)
 self.addEventListener('install', function(event) {
   event.waitUntil(
     /*caches.open(version).then(function(cache) {
@@ -35,11 +35,12 @@ self.addEventListener('activate', function (event) {
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(caches.match(event.request).then(function(response) {
+    // 在线的ajax请求，必须重新获取
     if (response !== undefined) {
       console.log('请求到旧数据')
       return response;
     } else {
-      console.log(event.request, '发起新的数据') // 通过这里来验证 ajax 数据请求是否也会被sw拦截
+      console.log(event.request, '发起新的数据')
       return fetch(event.request).then(function (response) {
         if(!response || response.status !== 200) {
           return response
