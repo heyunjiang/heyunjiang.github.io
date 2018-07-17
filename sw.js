@@ -38,7 +38,7 @@ self.addEventListener('fetch', function(event) {
   event.respondWith(caches.match(event.request).then(function(response) {
     // 在线、ajax请求，必须重新获取
     if((self.navigator&&self.navigator.onLine&&ajaxExp.test(event.request.url)) || !response) {
-      console.log(event.request, '发起新的数据', (self.navigator&&self.navigator.onLine&&ajaxExp.test(event.request.url)), !response)
+      console.log(event.request, '发起新的数据')
       return fetch(event.request).then(function (response) {
         if(!response || response.status !== 200) {
           return response
