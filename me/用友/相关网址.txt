@@ -1,7 +1,0 @@
-1. 财务报销: http://192.168.210.120/portal/
-
-2. vpn: https://avpn.yonyou.com/prx/000/https/vpnlcm.yonyou.com/login.html?id=common
-
-https://vpn.yonyou.com
-
-3. 连接打印机： \\10.115.0.83  Administrator *ufida2014
